@@ -7,7 +7,7 @@ http.get(url, (response) => {
             console.log(chunk.toString('utf8'))
         })
         response.on('end', () => {
-        console.log('response has ended with ' + c + ' chunk(s).')
+        console.log(`response has ended with ${c} chunk(s).`)
     })
 }).on('error', (error) => {
   console.error(`Got error: ${error.message}`)
