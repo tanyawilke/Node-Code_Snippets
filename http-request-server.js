@@ -22,5 +22,5 @@ http.createServer((request, response) => {
 
 // Test POST with no body:  curl -X POST localhost:3000
 // Test POST with body:  curl -X POST -d "key=value" localhost:3000
-// Test POST with JSON body:  
+// Test POST with JSON body:  curl -X POST -d "{key: 'value'}" localhost:3000
 // Test method other than post to get Hello World:  curl -X GET localhost:3000
