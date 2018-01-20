@@ -1,19 +1,21 @@
-const csvFilePath = 'customer-data.csv'
-const fs = require('fs')
-const csv = require('csvtojson')
-let arr = []
+var csv = require("csvtojson");
+const fs = require('fs');
+
+let csvFilePath = "customer-data.csv";
+var jsonContent = "";
+// Convert a csv file with csvtojson
 csv()
-  .fromFile(csvFilePath)
-  .on('json',(jsonObj)=>{
-    arr.push(jsonObj)
-  })
-  .on('done',(error)=>{
-    if (error) return process.exit(1)
-    console.log(arr)
-    fs.writeFile('customer-data.json', JSON.stringify(arr, null, 2), (error)=>{
-      if (error) return process.exit(1)
-      console.log('done')
-      process.exit(0)
-    })
-  }
-)
+.fromFile(csvFilePath)
+.on('json', (jsonObj)=>{
+  jsonContent = JSON.stringify(jsonObj);
+  console.log(jsonContent);
+  fs.appendFile("customer-data.json", jsonContent, 'utf8', function (err) {
+    if (err) {
+        console.log("An error occured while writing JSON Object to File.");
+        return console.log(err);
+    }
+ 
+    // console.log("JSON file has been saved.");
+  });
+  
+})
