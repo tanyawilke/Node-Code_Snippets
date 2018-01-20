@@ -7,7 +7,7 @@ var jsonContent = "";
 csv()
 .fromFile(csvFilePath)
 .on('json', (jsonObj)=>{
-  jsonContent = JSON.stringify(jsonObj);
+  jsonContent = JSON.stringify(jsonObj,null,2);
   console.log(jsonContent);
   fs.appendFile("customer-data.json", jsonContent, 'utf8', function (err) {
     if (err) {
